@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Leadt
 from .forms import LeadForm
 
@@ -29,3 +29,17 @@ def create_lead(request):
         'form':form
     }
     return render(request, 'leads/lead_create.html',context)
+
+def edit_lead(request,pk):
+    lead = get_object_or_404(Leadt, id=pk)
+    form = LeadForm(instance = lead)
+    if request.method == 'POST':
+        form = LeadForm(request.POST,instance=lead)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context ={
+        "form":form,
+        "lead" : lead
+    }
+    return render(request, 'leads/edit_lead.html', context)

@@ -12,5 +12,7 @@
     <p>Full name: {{ lead.first_name }} {{ lead.last_name }}</p>
     <p>Age: {{ lead.age }}</p>
     <p>The agent is {{ lead.agent }}</p>
+
+    <a href="{% url 'lead-update' lead.pk %}">Edit</a>
 </body>
 </html>
