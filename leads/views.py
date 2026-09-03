@@ -43,3 +43,8 @@ def edit_lead(request,pk):
         "lead" : lead
     }
     return render(request, 'leads/edit_lead.html', context)
+
+def delete_lead(request,pk):
+    lead = get_object_or_404(Leadt, id=pk)
+    lead.delete()
+    return redirect('home')
