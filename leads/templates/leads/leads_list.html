@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{% url 'create-lead' %}">Create lead</a>
+    <hr>
     <h1>List of Leads</h1>
     <ol>
         {% for lead in leads %}

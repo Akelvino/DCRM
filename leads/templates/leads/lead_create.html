@@ -8,9 +8,12 @@
 <body>
     <a href="{% url 'home' %}">Go back</a>
     <hr>
-    <h1>{{ lead.first_name }} Details</h1>
-    <p>Full name: {{ lead.first_name }} {{ lead.last_name }}</p>
-    <p>Age: {{ lead.age }}</p>
-    <p>The agent is {{ lead.agent }}</p>
+    <h1>Create Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" name="" id="" value="Add">
+    </form>
 </body>
 </html>
