@@ -32,12 +32,14 @@ def create_lead(request):
 
 def edit_lead(request,pk):
     lead = get_object_or_404(Leadt, id=pk)
-    form = LeadForm(instance = lead)
+    
     if request.method == 'POST':
         form = LeadForm(request.POST,instance=lead)
         if form.is_valid():
             form.save()
             return redirect('home')
+    else:
+        form = LeadForm(instance = lead)
     context ={
         "form":form,
         "lead" : lead
