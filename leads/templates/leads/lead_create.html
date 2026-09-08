@@ -1,15 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="max-w-2xl mx-auto px-4 py-8">
     
-    <a href="{% url 'home' %}">Go back</a>
-    <hr>
-    <h1>Create Form</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <!-- Top Bar Navigation -->
+    <div class="mb-6">
+        <a href="{% url 'home' %}" class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition">
+            &larr; Go back to Home
+        </a>
+    </div>
 
-        <input type="submit" name="" id="" value="Add">
-    </form>
-    
+    <!-- Form Container -->
+    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-4">Create Form</h1>
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+
+            
+            <div>
+                <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-semibold text-gray-700">First Name</label>
+                <div class="mt-1 [&_input]:w-full [&_input]:px-4 [&_input]:py-2.5 [&_input]:text-sm [&_input]:text-gray-900 [&_input]:bg-gray-50 [&_input]:border [&_input]:border-gray-300 [&_input]:rounded-lg [&_input]:focus:ring-2 [&_input]:focus:ring-indigo-600 [&_input]:focus:bg-white [&_input]:focus:outline-none">
+                    {{ form.first_name }}
+                </div>
+            </div>
+
+            
+            <div>
+                <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-semibold text-gray-700">Last Name</label>
+                <div class="mt-1 [&_input]:w-full [&_input]:px-4 [&_input]:py-2.5 [&_input]:text-sm [&_input]:text-gray-900 [&_input]:bg-gray-50 [&_input]:border [&_input]:border-gray-300 [&_input]:rounded-lg [&_input]:focus:ring-2 [&_input]:focus:ring-indigo-600 [&_input]:focus:bg-white [&_input]:focus:outline-none">
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+           
+            <div>
+                <label for="{{ form.age.id_for_label }}" class="block text-sm font-semibold text-gray-700">Age</label>
+                <div class="mt-1 [&_input]:w-full [&_input]:px-4 [&_input]:py-2.5 [&_input]:text-sm [&_input]:text-gray-900 [&_input]:bg-gray-50 [&_input]:border [&_input]:border-gray-300 [&_input]:rounded-lg [&_input]:focus:ring-2 [&_input]:focus:ring-indigo-600 [&_input]:focus:bg-white [&_input]:focus:outline-none">
+                    {{ form.age }}
+                </div>
+            </div>
+
+            
+            <div>
+                <label for="{{ form.agent.id_for_label }}" class="block text-sm font-semibold text-gray-700">Agent</label>
+                <div class="mt-1 [&_select]:w-full [&_select]:px-4 [&_select]:py-2.5 [&_select]:text-sm [&_select]:text-gray-900 [&_select]:bg-gray-50 [&_select]:border [&_select]:border-gray-300 [&_select]:rounded-lg [&_select]:focus:ring-2 [&_select]:focus:ring-indigo-600 [&_select]:focus:bg-white [&_select]:focus:outline-none">
+                    {{ form.agent }}
+                </div>
+            </div>
+
+           
+            <div class="pt-4">
+                <button type="submit" class="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition">
+                    Add
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
 {% endblock content %}
