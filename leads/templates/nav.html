@@ -4,14 +4,23 @@
       <span class="ml-3 text-xl cursor-pointer">DJ CRM</span>
     </a>
     {% if user.is_authenticated %}
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a href="{% url 'Logout' %}" class="mr-5 hover:text-gray-900">Log out</a>
-        <p>{{ user }} loged in</p>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center gap-3">
+        <div>
+          <p>{{ user }} loged in</p>
+        </div>
+        <div>
+          <form method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="hover:text-gray-900 cursor-pointer">
+                  Log out
+              </button>
+          </form>
+        </div>
       </nav>
     {% else %}
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
         
-        <a class="mr-5 hover:text-gray-900">Sign Up</a>
+        <a href="{% url 'signup' %}" class="mr-5 hover:text-gray-900">Sign Up</a>
       </nav>
       <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
         <a href="{% url 'login' %}">Login</a>

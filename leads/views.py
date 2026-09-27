@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Leadt
-from .forms import LeadForm
+from .forms import LeadForm, CreateUserForm
 
 # Create your views here.
 def home_page(request):
@@ -50,3 +50,17 @@ def delete_lead(request,pk):
     lead = get_object_or_404(Leadt, id=pk)
     lead.delete()
     return redirect('home')
+
+
+def signup(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    context ={
+      'form':form,  
+    }
+    return render(request, 'registration/signup.html',context)
