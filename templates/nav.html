@@ -6,7 +6,10 @@
     {% if user.is_authenticated %}
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center gap-3">
         <div>
-          <p>{{ user }} loged in</p>
+          <a href="">Leads</a>
+        </div>
+        <div>
+          <p>Loged in as {{ user }}</p>
         </div>
         <div>
           <form method="POST" action="{% url 'leads:logout' %}">
