@@ -12,6 +12,6 @@ urlpatterns = [
     path('delete/<int:pk>/', views.delete_lead, name='lead-delete'),
     path('create/', views.create_lead, name='create-lead'),
     path('login', LoginView.as_view(), name='login'),
-    path('Logout', LogoutView.as_view(next_page='home'), name='logout'),
+    path('Logout', LogoutView.as_view(next_page='leads:home'), name='logout'),
     path('signup', views.signup, name='signup'),
 ]

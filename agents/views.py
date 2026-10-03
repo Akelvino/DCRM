@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from leads.models import Agent
 from django.contrib.auth.decorators import login_required
 from .forms import AgentModelForm
@@ -24,3 +24,8 @@ def create_agent(request):
             return redirect("agents:agent")
     context = {'form':form}
     return render(request,'agent/agent_create.html', context)
+
+def agent_details(request,pk):
+    agent = get_object_or_404(Agent, id=pk)
+    context = {'agent':agent}
+    return render(request,'agent/agent_detail.html',context)
