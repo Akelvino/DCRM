@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-8">
+    
+    <!-- Top Bar Navigation -->
+    <div class="mb-6">
+        <a href="{% url 'agents:agent' %}" class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition">
+            &larr; Go back to Agents
+        </a>
+    </div>
+
+    <!-- Form Container -->
+    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-4">Create Agent</h1>
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <div class="mt-1 [&_select]:w-full [&_select]:px-4 [&_select]:py-2.5 [&_select]:text-sm [&_select]:text-gray-900 [&_select]:bg-gray-50 [&_select]:border [&_select]:border-gray-300 [&_select]:rounded-lg [&_select]:focus:ring-2 [&_select]:focus:ring-indigo-600 [&_select]:focus:bg-white [&_select]:focus:outline-none">
+                    {{ form.as_p }}
+                </div>
+            </div>           
+            <div class="pt-4">
+                <button type="submit" class="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition">
+                    Create
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -25,8 +25,8 @@ class Agent(models.Model):
      user = models.OneToOneField(User, on_delete=models.CASCADE)
      organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
-     def __str__(selt):
-          return selt.user.username
+     def __str__(self):
+          return self.user.email
 
 
 def post_user_created_signal(sender, instance, created, **kwargs):
