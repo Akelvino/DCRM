@@ -24,6 +24,8 @@ def lead_detail(request, pk):
 @login_required
 def create_lead(request):
     form = LeadForm()
+    if not request.user.is_organisor:
+        return redirect("leads:home")
     if request.method == "POST":
         form = LeadForm(request.POST)
         if form.is_valid():

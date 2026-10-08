@@ -8,6 +8,11 @@
         <div>
           <a href="">Leads</a>
         </div>
+        {% if user.is_organisor %}
+        <div>
+          <a href="">Agent</a>
+        </div>
+        {% endif %}
         <div>
           <p>Loged in as {{ user }}</p>
         </div>

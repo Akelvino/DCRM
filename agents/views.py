@@ -7,7 +7,8 @@ from .forms import AgentModelForm
 # Create your views here.
 @login_required
 def agent_list(request):
-    agents = Agent.objects.all()
+    user_agent = Agent.objects.get(user=request.user)
+    agents = Agent.objects.filter(organisation = user_agent.organisation)
     context = {"agents":agents}
     return render(request, 'agent/agent_list.html', context)
 
@@ -52,4 +53,4 @@ def edit_agent_details(request, pk):
 def delete_agent(request,pk):
     agent = get_object_or_404(Agent, id=pk)
     agent.delete()
-    return redirect('agent')
+    return redirect('agents:agent')
