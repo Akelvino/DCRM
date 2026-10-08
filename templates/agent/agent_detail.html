@@ -10,7 +10,7 @@
         <div class="flex mb-4">
           <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Overview</a>
           <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
-          <a href="#" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Update Details</a>
+          <a href="{% url 'agents:edit_agent_details' agent.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Update Details</a>
         </div>
         <div class="flex border-t border-gray-200 py-2">
           <span class="text-gray-500">Agent Username: {{ agent.user.username }} </span>
@@ -20,7 +20,7 @@
         </div>
         <div class="flex mt-3">
           <button class="w-1/2 flex ml-auto text-white bg-indigo-500 border-0  focus:outline-none rounded">
-            <a class="py-3 px-6 text-center" href="#">Delete</a>
+            <a class="py-3 px-6 text-center" href="{% url 'agents:delete_agent' agent.pk %}">Delete</a>
           </button>
         </div>
       </div>

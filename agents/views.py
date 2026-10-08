@@ -25,7 +25,31 @@ def create_agent(request):
     context = {'form':form}
     return render(request,'agent/agent_create.html', context)
 
+@login_required
 def agent_details(request,pk):
     agent = get_object_or_404(Agent, id=pk)
     context = {'agent':agent}
     return render(request,'agent/agent_detail.html',context)
+
+@login_required
+def edit_agent_details(request, pk):
+    agent = get_object_or_404(Agent, id=pk)
+    
+    if request.method == 'POST':
+        form = AgentModelForm(request.POST, instance=agent)
+        if form.is_valid():
+            form.save()
+            return redirect('agent_details')
+    else:
+        form = AgentModelForm(instance = agent)
+    context = {
+        "form":form,
+        "agent":agent
+        }
+    return render(request, 'agent/edit_agent_detail.html', context)
+
+@login_required
+def delete_agent(request,pk):
+    agent = get_object_or_404(Agent, id=pk)
+    agent.delete()
+    return redirect('agent')
